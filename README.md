@@ -57,40 +57,40 @@ Create user account.
 POST /users/login:
 Authenticate user.
 # Database Schemas
--Courses
-  -courseID (ObjectId)
-  -department (String)
-  -courseNumber (String)
-  -title (String)
-  -description (String)
-  -credits (Number)
-  -syllabusLink (String)
--Users
-  -userID (ObjectId)
-  -username (String)
-  -email (String)
-  -passwordHash (String)
-  -createdAt (Date)
--Reviews
-  -reviewID (ObjectId)
-  -courseID (ObjectId)
-  -userID (ObjectId)
-  -difficultyRating (Number)
-  -workloadRating (Number)
-  -overallRating (Number)
-  -reviewText (String)
-  -createdAt (Date)
--Threads
-  -threadID (ObjectId)
-  -courseID (ObjectId)
-  -title (String)
-  -createdBy (ObjectId)
-  -createdAt (Date)
--Comments
-  -commentID (ObjectId)
-  -threadID (ObjectId)
-  -userID (ObjectId)
-  -content (String)
-  -createdAt (Date)
+- Courses
+  - courseID (ObjectId)
+  - department (String)
+  - courseNumber (String)
+  - title (String)
+  - description (String)
+  - credits (Number)
+  - syllabusLink (String)
+- Users
+  - userID (ObjectId)
+  - username (String)
+  - email (String)
+  - passwordHash (String)
+  - createdAt (Date)
+- Reviews
+  - reviewID (ObjectId)
+  - courseID (ObjectId)
+  - userID (ObjectId)
+  - difficultyRating (Number)
+  - workloadRating (Number)
+  - overallRating (Number)
+  - reviewText (String)
+  - createdAt (Date)
+- Threads
+  - threadID (ObjectId)
+  - courseID (ObjectId)
+  - title (String)
+  - createdBy (ObjectId)
+  - createdAt (Date)
+- Comments
+  - commentID (ObjectId)
+  - threadID (ObjectId)
+  - userID (ObjectId)
+  - content (String)
+  - createdAt (Date)
 
 
