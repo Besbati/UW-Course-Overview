@@ -10,6 +10,8 @@ As developers and UW students ourselves, we have personally experienced the frus
 
 
 # Technical Description
+<img width="658" height="744" alt="Screenshot 2026-02-15 at 6 03 41 PM" src="https://github.com/user-attachments/assets/dfd11fca-70a5-4eaf-84c9-fcae692101dd" />
+
 # User Stories
 <img width="440" height="641" alt="Screenshot 2026-02-15 at 6 00 40 PM" src="https://github.com/user-attachments/assets/1364fd66-2680-4ab0-b7a8-d222b888dfec" />
 <br>
