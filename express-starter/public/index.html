@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UW Course Overview</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav class="navbar">
+    <a href="index.html" class="brand">
+      <div class="brand-logo">UW</div>
+      <span class="brand-name">Course Overview</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link active">Courses</a>
+      <a href="course.html" class="nav-link">Course Page</a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <header class="hero">
+    <h1>Find Your Next Course</h1>
+    <p>Student reviews and honest takes on UW courses — all in one place.</p>
+    <div class="search-bar">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by course name, department, or number…"
+        oninput="filterCourses()"
+      />
+    </div>
+  </header>
+
+  <!-- ── Main ── -->
+  <main class="container">
+
+    <!-- Department filter -->
+    <div class="filters">
+      <span class="filter-label">Department:</span>
+      <button class="chip active" onclick="setDept(this, 'all')">All</button>
+      <button class="chip" onclick="setDept(this, 'CSE')">CSE</button>
+      <button class="chip" onclick="setDept(this, 'MATH')">MATH</button>
+      <button class="chip" onclick="setDept(this, 'ENGL')">ENGL</button>
+      <button class="chip" onclick="setDept(this, 'STAT')">STAT</button>
+      <button class="chip" onclick="setDept(this, 'INFO')">INFO</button>
+      <button class="chip" onclick="setDept(this, 'PHYS')">PHYS</button>
+    </div>
+
+    <!-- Status message (loading / error) -->
+    <p id="statusMsg" class="status-msg">Loading courses…</p>
+
+    <!-- Course grid -->
+    <div class="course-grid" id="courseGrid"></div>
+
+  </main>
+
+  <footer class="footer">
+    <p>UW Course Overview &mdash; Built by UW Students</p>
+  </footer>
+
+  <script src="javascripts/index.js"></script>
+</body>
+</html>
