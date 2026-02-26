@@ -8,6 +8,8 @@ Our application is designed specifically for current and prospective University 
 Students would use this application because it centralizes course-specific insight into a structured, searchable system. Rather than navigating long discussion threads or relying on anecdotal advice, users can access organized course pages that include student-written reviews, discussion threads, and practical details such as perceived difficulty, time commitment, grading structure, and teaching style. By anchoring conversations to individual courses, the platform ensures that feedback remains focused, relevant, and actionable.
 As developers and UW students ourselves, we have personally experienced the frustration of enrolling in courses without understanding what they would truly involve beyond the catalog description. We have seen peers avoid classes due to uncertainty or misinformation. This project allows us to address a real problem within our academic community while building meaningful full-stack development skills. We are motivated not only to create a technically functional system, but also to design something that could realistically improve the course planning experience for students like us.
 
+## Web App URL
+https://uw-course-overview.onrender.com
 
 # Technical Description
 <img width="658" height="744" alt="Screenshot 2026-02-15 at 6 03 41 PM" src="https://github.com/user-attachments/assets/dfd11fca-70a5-4eaf-84c9-fcae692101dd" />
