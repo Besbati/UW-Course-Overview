@@ -43,6 +43,39 @@
     <p id="reviewStatus"></p>
     <div id="reviewsList"></div>
 
+    <h2>Add a Review</h2>
+    <form id="reviewForm" onsubmit="submitReview(event)">
+      <p>
+        <label>Name (optional):
+          <input type="text" id="rfUsername" placeholder="Anonymous" />
+        </label>
+      </p>
+      <p>
+        <label>Overall Rating (1&ndash;5):
+          <input type="number" id="rfOverall" min="1" max="5" required />
+        </label>
+      </p>
+      <p>
+        <label>Difficulty (1&ndash;5):
+          <input type="number" id="rfDifficulty" min="1" max="5" required />
+        </label>
+      </p>
+      <p>
+        <label>Workload (1&ndash;5):
+          <input type="number" id="rfWorkload" min="1" max="5" required />
+        </label>
+      </p>
+      <p>
+        <label>Review:<br>
+          <textarea id="rfText" rows="4" cols="50" required></textarea>
+        </label>
+      </p>
+      <p>
+        <button type="submit">Submit Review</button>
+      </p>
+      <p id="reviewFormStatus"></p>
+    </form>
+
   </main>
 
   <hr>
