@@ -4,60 +4,55 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UW Course Overview</title>
-  <link rel="stylesheet" href="stylesheets/style.css" />
 </head>
 <body>
 
-  <!-- ── Navbar ── -->
-  <nav class="navbar">
-    <a href="index.html" class="brand">
-      <div class="brand-logo">UW</div>
-      <span class="brand-name">Course Overview</span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html" class="nav-link active">Courses</a>
-      <a href="course.html" class="nav-link">Course Page</a>
-    </div>
+  <nav>
+    <strong><a href="index.html">UW Course Overview</a></strong>
+    &mdash;
+    <a href="index.html">Courses</a>
+    &bull;
+    <a href="course.html">Course Page</a>
   </nav>
 
-  <!-- ── Hero ── -->
-  <header class="hero">
+  <hr>
+
+  <header>
     <h1>Find Your Next Course</h1>
-    <p>Student reviews and honest takes on UW courses — all in one place.</p>
-    <div class="search-bar">
+    <p>Student reviews and honest takes on UW courses &mdash; all in one place.</p>
+    <p>
+      <label for="searchInput">Search:</label>
       <input
         type="text"
         id="searchInput"
-        placeholder="Search by course name, department, or number…"
+        placeholder="Course name, department, or number&hellip;"
         oninput="filterCourses()"
       />
-    </div>
+    </p>
   </header>
 
-  <!-- ── Main ── -->
-  <main class="container">
+  <main>
 
-    <!-- Department filter -->
-    <div class="filters">
-      <span class="filter-label">Department:</span>
-      <button class="chip active" onclick="setDept(this, 'all')">All</button>
-      <button class="chip" onclick="setDept(this, 'CSE')">CSE</button>
-      <button class="chip" onclick="setDept(this, 'MATH')">MATH</button>
-      <button class="chip" onclick="setDept(this, 'ENGL')">ENGL</button>
-      <button class="chip" onclick="setDept(this, 'STAT')">STAT</button>
-      <button class="chip" onclick="setDept(this, 'INFO')">INFO</button>
-      <button class="chip" onclick="setDept(this, 'PHYS')">PHYS</button>
-    </div>
+    <p>
+      <strong>Filter by department:</strong>
+      <button onclick="setDept(this, 'all')">All</button>
+      <button onclick="setDept(this, 'CSE')">CSE</button>
+      <button onclick="setDept(this, 'MATH')">MATH</button>
+      <button onclick="setDept(this, 'ENGL')">ENGL</button>
+      <button onclick="setDept(this, 'STAT')">STAT</button>
+      <button onclick="setDept(this, 'INFO')">INFO</button>
+      <button onclick="setDept(this, 'PHYS')">PHYS</button>
+    </p>
 
-    <!-- Status message (loading / error) -->
-    <p id="statusMsg" class="status-msg">Loading courses…</p>
+    <p id="statusMsg">Loading courses&hellip;</p>
 
-    <!-- Course grid -->
-    <div class="course-grid" id="courseGrid"></div>
+    <div id="courseGrid"></div>
 
   </main>
 
-  <footer class="footer">
+  <hr>
+
+  <footer>
     <p>UW Course Overview &mdash; Built by UW Students</p>
   </footer>
 

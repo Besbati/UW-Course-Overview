@@ -1,4 +1,4 @@
-// app.js — Course browser
+// index.js — Course browser
 // Fetches courses from GET /api/courses and renders them.
 
 const API = '/api/courses';
@@ -8,8 +8,7 @@ let activeDept = 'all';
 
 // ── Fetch courses from the backend ────────────────────────────────────────────
 async function loadCourses() {
-  const statusMsg  = document.getElementById('statusMsg');
-  const courseGrid = document.getElementById('courseGrid');
+  const statusMsg = document.getElementById('statusMsg');
 
   try {
     const res = await fetch(API);
@@ -27,7 +26,6 @@ async function loadCourses() {
 function renderCourses() {
   const query      = document.getElementById('searchInput').value.toLowerCase();
   const courseGrid = document.getElementById('courseGrid');
-  const statusMsg  = document.getElementById('statusMsg');
 
   const filtered = allCourses.filter((c) => {
     const matchDept   = activeDept === 'all' || c.department === activeDept;
@@ -37,44 +35,29 @@ function renderCourses() {
   });
 
   if (filtered.length === 0) {
-    courseGrid.innerHTML = '<p class="empty-state">No courses match your search.</p>';
+    courseGrid.innerHTML = '<p>No courses match your search.</p>';
     return;
   }
 
-  courseGrid.innerHTML = filtered.map((c) => `
-    <div class="course-card" onclick="openCourse('${c._id}')">
-      <div class="card-top">
-        <span class="badge badge-dept">${c.department}</span>
-        <span class="badge badge-credits">${c.credits} cr</span>
-      </div>
-      <div class="card-code">${c.department} ${c.courseNumber}</div>
-      <div class="card-title">${c.title}</div>
-      <div class="card-desc">${c.description || ''}</div>
-      <div class="card-footer">
-        <span class="stars">${stars(c.avgOverall)}</span>
-        <strong>${c.avgOverall ? c.avgOverall.toFixed(1) : 'N/A'}</strong>
-        <span>(${c.reviewCount ?? 0} reviews)</span>
-      </div>
-    </div>
-  `).join('');
+  courseGrid.innerHTML = '<ul>' + filtered.map((c) => `
+    <li>
+      <h3><a href="course.html?id=${c._id}">${c.department} ${c.courseNumber}: ${c.title}</a></h3>
+      <p>${c.department} &mdash; ${c.credits} credit${c.credits === 1 ? '' : 's'}</p>
+      <p>${c.description || ''}</p>
+      <p>Rating: ${stars(c.avgOverall)} ${c.avgOverall ? c.avgOverall.toFixed(1) + '/5' : 'N/A'} &mdash; ${c.reviewCount ?? 0} review${(c.reviewCount ?? 0) === 1 ? '' : 's'}</p>
+    </li>
+  `).join('') + '</ul>';
 }
 
 // ── Department filter ─────────────────────────────────────────────────────────
 function setDept(btn, dept) {
   activeDept = dept;
-  document.querySelectorAll('.chip').forEach((c) => c.classList.remove('active'));
-  btn.classList.add('active');
   renderCourses();
 }
 
 // ── Search input handler ──────────────────────────────────────────────────────
 function filterCourses() {
   renderCourses();
-}
-
-// ── Navigate to course detail page ────────────────────────────────────────────
-function openCourse(id) {
-  window.location.href = `course.html?id=${id}`;
 }
 
 // ── Star string helper ────────────────────────────────────────────────────────
