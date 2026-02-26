@@ -1,4 +1,5 @@
 import express from 'express';
+import models from './models.js';
 
 const router = express.Router();
 
@@ -9,9 +10,37 @@ const reviews = [
 ];
 
 // GET /api/courses/:id/reviews
-router.get('/courses/:id/reviews', (req, res) => {
-  const courseReviews = reviews.filter(r => r.courseID === req.params.id);
-  res.json(courseReviews);
+router.get('/courses/:id/reviews', async (req, res) => {
+  try {
+    const reviews = await models.Review.find({
+      courseID: req.params.id
+    })
+    res.json(reviews);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Failed to fetch reviews" })
+  }
 });
+
+router.post('/courses/:id/reviews', async (req, req) => {
+  try {
+    const { difficultyRating, workloadRating, overallRating, reviewText } = req.body;
+
+    const newReview = await models.Review.create({
+      courseID: req.params.id,
+      userID: "demoUser",
+      difficultyRating,
+      workloadRating,
+      overallRating,
+      reviewText
+    })
+
+    res.status(200).json(newReview);
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "Failed to create review" })
+  }
+})
 
 export default router;
