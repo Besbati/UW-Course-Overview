@@ -6,7 +6,7 @@ const courseId = params.get('id');
 
 // ── Star string helper ────────────────────────────────────────────────────────
 function stars(val) {
-  if (!val) return '—';
+  if (!val) return '&mdash;';
   const full = Math.round(val);
   return '★'.repeat(full) + '☆'.repeat(5 - full);
 }
@@ -19,7 +19,7 @@ function fmt(d) {
 async function loadCourse() {
   if (!courseId) {
     document.getElementById('courseHeader').innerHTML =
-      '<p class="status-msg">No course selected. <a href="index.html">Browse courses →</a></p>';
+      '<p>No course selected. <a href="index.html">Browse courses &rarr;</a></p>';
     return;
   }
 
@@ -28,18 +28,14 @@ async function loadCourse() {
     if (!res.ok) throw new Error(`${res.status}`);
     const course = await res.json();
 
-    // Populate header
-    document.title = `${course.department} ${course.courseNumber} — UW Course Overview`;
+    document.title = `${course.department} ${course.courseNumber} \u2014 UW Course Overview`;
+
     document.getElementById('courseHeader').innerHTML = `
-      <div class="dept-row">
-        <span class="badge badge-dept">${course.department}</span>
-        <span class="badge badge-credits">${course.credits} credits</span>
-      </div>
+      <p>${course.department} &mdash; ${course.credits} credit${course.credits === 1 ? '' : 's'}</p>
       <h1>${course.department} ${course.courseNumber}: ${course.title}</h1>
-      <p class="course-desc">${course.description || ''}</p>
+      <p>${course.description || ''}</p>
     `;
 
-    // Populate sidebar
     const ratings = course.ratings || {};
     document.getElementById('sdDept').textContent       = course.department;
     document.getElementById('sdNumber').textContent     = course.courseNumber;
@@ -51,7 +47,7 @@ async function loadCourse() {
 
   } catch (err) {
     document.getElementById('courseHeader').innerHTML =
-      `<p class="status-msg">Could not load course. (${err.message})</p>`;
+      `<p>Could not load course. (${err.message})</p>`;
     console.error(err);
   }
 }
@@ -71,36 +67,23 @@ async function loadReviews() {
     reviewStatus.textContent = '';
 
     if (reviews.length === 0) {
-      reviewsList.innerHTML = '<p class="status-msg">No reviews yet for this course.</p>';
+      reviewsList.innerHTML = '<p>No reviews yet for this course.</p>';
       return;
     }
 
-    reviewsList.innerHTML = reviews.map((r) => `
-      <div class="review-card">
-        <div class="review-header">
-          <div>
-            <div class="review-author">@${r.userID?.username || 'Anonymous'}</div>
-            <div class="review-date">${fmt(r.createdAt)}</div>
-          </div>
-          <span class="stars">${stars(r.overallRating)}</span>
-        </div>
-        <div class="review-ratings">
-          <div class="rating-item">
-            <span class="rating-item-label">Difficulty</span>
-            <span class="rating-item-val">${r.difficultyRating}/5</span>
-          </div>
-          <div class="rating-item">
-            <span class="rating-item-label">Workload</span>
-            <span class="rating-item-val">${r.workloadRating}/5</span>
-          </div>
-          <div class="rating-item">
-            <span class="rating-item-label">Overall</span>
-            <span class="rating-item-val">${r.overallRating}/5</span>
-          </div>
-        </div>
-        <div class="review-text">${r.reviewText}</div>
-      </div>
-    `).join('');
+    reviewsList.innerHTML = '<ul>' + reviews.map((r) => `
+      <li>
+        <p>
+          <strong>@${r.userID?.username || 'Anonymous'}</strong> &mdash; ${fmt(r.createdAt)}
+        </p>
+        <p>
+          Overall: ${stars(r.overallRating)} ${r.overallRating}/5 &nbsp;|&nbsp;
+          Difficulty: ${r.difficultyRating}/5 &nbsp;|&nbsp;
+          Workload: ${r.workloadRating}/5
+        </p>
+        <p>${r.reviewText}</p>
+      </li>
+    `).join('') + '</ul>';
 
   } catch (err) {
     reviewStatus.textContent = `Could not load reviews. (${err.message})`;
