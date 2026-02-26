@@ -24,7 +24,7 @@ body {
   flex-direction: column;
 }
 
-a { text-decoration: none; color: inherit; }
+a { text-decoration: none; color: inherit; cursor: pointer; }
 
 /* ── Navbar ───────────────────────────────────────────────────────────────── */
 .navbar {
@@ -158,7 +158,7 @@ a { text-decoration: none; color: inherit; }
 .course-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 /* ── Course card ──────────────────────────────────────────────────────────── */
@@ -166,13 +166,13 @@ a { text-decoration: none; color: inherit; }
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 1.3rem;
+  padding: 1.25rem;
   box-shadow: var(--shadow);
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.4rem;
 }
 .course-card:hover {
   transform: translateY(-2px);
@@ -183,7 +183,7 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2px;
+  margin-bottom: 0.25rem;
 }
 
 .badge {
@@ -191,7 +191,7 @@ a { text-decoration: none; color: inherit; }
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  padding: 2px 9px;
+  padding: 3px 10px;
   border-radius: 99px;
   text-transform: uppercase;
 }
@@ -199,12 +199,12 @@ a { text-decoration: none; color: inherit; }
 .badge-credits { background: #FFF8E8; color: var(--gold); border: 1px solid #F0D98A; }
 
 .card-code  { font-family: Arial, sans-serif; font-size: 0.75rem; font-weight: 700; color: var(--purple); letter-spacing: 0.03em; }
-.card-title { font-size: 1.05rem; line-height: 1.3; }
+.card-title { font-family: Georgia, 'Times New Roman', serif; font-size: 1.05rem; line-height: 1.35; color: var(--text); }
 .card-desc  {
   font-family: Arial, sans-serif;
   font-size: 0.82rem;
   color: var(--muted);
-  line-height: 1.5;
+  line-height: 1.55;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -215,9 +215,9 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   gap: 6px;
-  padding-top: 8px;
+  padding-top: 0.6rem;
   border-top: 1px solid var(--border);
-  margin-top: 4px;
+  margin-top: 0.25rem;
   font-family: Arial, sans-serif;
   font-size: 0.8rem;
   color: var(--muted);
@@ -241,8 +241,9 @@ a { text-decoration: none; color: inherit; }
   display: inline-block;
   margin-bottom: 1.2rem;
   transition: color 0.15s;
+  cursor: pointer;
 }
-.back-link:hover { color: var(--purple); }
+.back-link:hover { color: var(--purple); text-decoration: underline; }
 
 .course-header {
   margin-bottom: 2rem;
