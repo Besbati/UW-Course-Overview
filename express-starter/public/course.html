@@ -3,76 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Course Detail — UW Course Overview</title>
-  <link rel="stylesheet" href="stylesheets/style.css" />
+  <title>Course Detail &mdash; UW Course Overview</title>
 </head>
 <body>
 
-  <!-- ── Navbar ── -->
-  <nav class="navbar">
-    <a href="index.html" class="brand">
-      <div class="brand-logo">UW</div>
-      <span class="brand-name">Course Overview</span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html" class="nav-link">Courses</a>
-      <a href="course.html" class="nav-link active">Course Page</a>
-    </div>
+  <nav>
+    <strong><a href="index.html">UW Course Overview</a></strong>
+    &mdash;
+    <a href="index.html">Courses</a>
+    &bull;
+    <a href="course.html">Course Page</a>
   </nav>
 
-  <main class="container">
+  <hr>
 
-    <a href="index.html" class="back-link">← Back to all courses</a>
+  <main>
+
+    <p><a href="index.html">&larr; Back to all courses</a></p>
 
     <!-- Course header — filled in by JS -->
-    <div id="courseHeader" class="course-header">
-      <p class="status-msg">Loading course…</p>
+    <div id="courseHeader">
+      <p>Loading course&hellip;</p>
     </div>
 
-    <div class="course-layout">
-
-      <!-- Left: Reviews -->
-      <section class="reviews-section">
-        <h2 class="section-title">Student Reviews</h2>
-        <p id="reviewStatus" class="status-msg"></p>
-        <div id="reviewsList"></div>
-      </section>
-
-      <!-- Right: Quick stats -->
-      <aside class="course-sidebar" id="courseSidebar" style="display:none">
-        <div class="sidebar-card">
-          <div class="sidebar-row">
-            <span class="sidebar-label">Department</span>
-            <span id="sdDept" class="sidebar-value"></span>
-          </div>
-          <div class="sidebar-row">
-            <span class="sidebar-label">Number</span>
-            <span id="sdNumber" class="sidebar-value"></span>
-          </div>
-          <div class="sidebar-row">
-            <span class="sidebar-label">Credits</span>
-            <span id="sdCredits" class="sidebar-value"></span>
-          </div>
-          <hr class="divider" />
-          <div class="sidebar-row">
-            <span class="sidebar-label">Avg Difficulty</span>
-            <span id="sdDifficulty" class="sidebar-value"></span>
-          </div>
-          <div class="sidebar-row">
-            <span class="sidebar-label">Avg Workload</span>
-            <span id="sdWorkload" class="sidebar-value"></span>
-          </div>
-          <div class="sidebar-row">
-            <span class="sidebar-label">Avg Overall</span>
-            <span id="sdOverall" class="sidebar-value highlight"></span>
-          </div>
-        </div>
-      </aside>
-
+    <!-- Quick stats sidebar — filled in and shown by JS -->
+    <div id="courseSidebar" style="display:none">
+      <h2>Quick Stats</h2>
+      <ul>
+        <li><strong>Department:</strong> <span id="sdDept"></span></li>
+        <li><strong>Number:</strong> <span id="sdNumber"></span></li>
+        <li><strong>Credits:</strong> <span id="sdCredits"></span></li>
+        <li><strong>Avg Difficulty:</strong> <span id="sdDifficulty"></span></li>
+        <li><strong>Avg Workload:</strong> <span id="sdWorkload"></span></li>
+        <li><strong>Avg Overall:</strong> <span id="sdOverall"></span></li>
+      </ul>
     </div>
+
+    <h2>Student Reviews</h2>
+    <p id="reviewStatus"></p>
+    <div id="reviewsList"></div>
+
   </main>
 
-  <footer class="footer">
+  <hr>
+
+  <footer>
     <p>UW Course Overview &mdash; Built by UW Students</p>
   </footer>
 
